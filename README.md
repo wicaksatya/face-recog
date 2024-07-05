@@ -159,7 +159,7 @@ DELETE http://localhost:5000/api/face/1
    ```
 2. Navigate to the Project Directory:
    ```bash
-   cd <repository_directory>
+   cd face-recog
    ``` 
 3. Run Docker Compose:
    ```bash
