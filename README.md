@@ -161,19 +161,13 @@ DELETE http://localhost:5000/api/face/1
    ```bash
    cd <repository_directory>
    ``` 
-3. Pull Docker Image:
-   * Open a terminal on the machine where you want to run your Docker images.
-   * Use the docker pull command to pull the Docker images from Docker Hub:
-   ```bash
-   docker pull swicaksana/face_recog:latest
-   ```  
-4. Run Docker Compose:
+3. . Run Docker Compose:
    * Navigate to the directory containing your docker-compose.yaml file.
    * Run Docker Compose to start your services:
    ```bash
    docker-compose up
    ```
-5. Access the API using Postman to interact with the endpoints.
+4. Access the API using Postman to interact with the endpoints.
 
 ### Example Use Case
 1. **Register a Face**:
