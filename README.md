@@ -165,7 +165,7 @@ DELETE http://localhost:5000/api/face/1
    * Open a terminal on the machine where you want to run your Docker images.
    * Use the docker pull command to pull the Docker images from Docker Hub:
    ```bash
-   pull swicaksana/face_recog:latest
+   docker pull swicaksana/face_recog:latest
    ```  
 4. Run Docker Compose:
    * Navigate to the directory containing your docker-compose.yaml file.
