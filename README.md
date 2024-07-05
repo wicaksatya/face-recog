@@ -152,7 +152,7 @@ DELETE http://localhost:5000/api/face/1
 
 ## Usage
 
-### Pulling and Running Docker Images
+### Running Docker Images
 1. Clone the Repository:
    ```bash
    git clone https://github.com/wicaksatya/face-recog
