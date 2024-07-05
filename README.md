@@ -152,18 +152,28 @@ DELETE http://localhost:5000/api/face/1
 
 ## Usage
 
-### Running the Application with Docker
-1. Build Docker Image:
+### Pulling and Running Docker Images
+1. Clone the Repository:
    ```bash
-   docker-compose build
+   git clone https://github.com/wicaksatya/face-recog
    ```
-   
-2. Run Docker Container:
+2. Navigate to the Project Directory
+   ```bash
+   cd <repository_directory>
+   ``` 
+3. Pull Docker Image:
+   * Open a terminal on the machine where you want to run your Docker images.
+   * Use the docker pull command to pull the Docker images from Docker Hub:
+   ```bash
+   pull swicaksana/face_recog:latest
+   ```  
+4. Run Docker Compose:
+   * Navigate to the directory containing your docker-compose.yaml file.
+   * Run Docker Compose to start your services:
    ```bash
    docker-compose up
    ```
-
-3. Access the API using Postman to interact with the endpoints.
+5. Access the API using Postman to interact with the endpoints.
 
 ### Example Use Case
 1. **Register a Face**:
