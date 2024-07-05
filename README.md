@@ -24,17 +24,17 @@ This face recognition system provides RESTful API endpoints to register and reco
 {
     "name": "string",       // Name of the person
     "image_path": "string"  // Path to the image file
-}
+}```
 
 **Response**:
 ```json
 {
     "status": "Face has been registered"
-}
+}```
 
 **Request Body**:
 ```json
 {
     "name": "string",       // Name of the person
     "image_path": "string"  // Path to the image file
-}
+}```
