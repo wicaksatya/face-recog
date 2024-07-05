@@ -1,0 +1,7 @@
+Flask
+onnx
+onnxruntime
+numpy
+torch
+torchvision
+facenet-pytorch
