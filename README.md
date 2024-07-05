@@ -157,13 +157,11 @@ DELETE http://localhost:5000/api/face/1
    ```bash
    git clone https://github.com/wicaksatya/face-recog
    ```
-2. Navigate to the Project Directory
+2. Navigate to the Project Directory:
    ```bash
    cd <repository_directory>
    ``` 
-3. . Run Docker Compose:
-   * Navigate to the directory containing your docker-compose.yaml file.
-   * Run Docker Compose to start your services:
+3. Run Docker Compose:
    ```bash
    docker-compose up
    ```
