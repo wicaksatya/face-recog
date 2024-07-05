@@ -22,10 +22,11 @@ This face recognition system provides RESTful API endpoints to register and reco
 **Request Body**:
 ```json
 {
-    "name": "string",       // Name of the person
-    "image_path": "string"  // Path to the image file
+    "name": "string",      
+    "image_path": "string" 
 }
 ```
+
 **Response**:
 ```json
 {
@@ -36,13 +37,140 @@ This face recognition system provides RESTful API endpoints to register and reco
 **Example Request**:
 ```json
 {
-    "name": "Obama",       // Name of the person
-    "image_path": "/path/to/obama.jpg"  // Path to the image file
+    "name": "Obama",     
+    "image_path": "/path/to/obama.jpg"
 }
 ```
+
 **Example Response**:
 ```json
 {
     "status": "Face has been registered"
 }
 ```
+
+### 2. Recognize Face
+
+**Endpoint**: `/api/face/recognize`
+
+**Method**: `POST`
+
+**Description**: Recognizes a face from an image by comparing extracted features with registered faces.
+
+**Request Body**:
+```json
+{     
+    "image_path": "string" 
+}
+```
+
+**Response**:
+```json
+{
+    "match": {
+        "id": "integer",   
+        "name": "string"    
+    },
+    "error": "No match found"
+}
+```
+
+**Example Request**:
+```json
+{
+    "image_path": "/path/to/obama_recog.jpg"
+}
+```
+
+**Example Response**:
+```json
+{
+    "match": {
+        "id": 1,   
+        "name": "Obama"    
+    }
+}
+```
+
+### 3. Get All Registered Faces
+
+**Endpoint**: `/api/face`
+
+**Method**: `GET`
+
+**Description**: Retrieves all registered faces.
+
+**Response**:
+```json
+{
+    "id": "integer",   
+    "name": "string"
+}
+```
+
+**Request**:
+```http
+GET http://localhost:5000/api/face
+```
+
+**Example Response**:
+```json
+[
+    {
+        "id": 1,   
+        "name": "Obama"
+    }
+]
+```
+
+### 4. Delete Registered Faces by ID
+
+**Endpoint**: `/api/face/<id>`
+
+**Method**: `DELETE`
+
+**Description**: Deletes a registered face by ID.
+
+**Response**:
+```json
+{
+    "status": "Face has been deleted"
+}
+```
+
+**Example Request**:
+```http
+DELETE http://localhost:5000/api/face/1
+```
+
+**Example Response**:
+```json
+{
+    "status": "Face has been deleted"
+}
+```
+
+## Usage
+
+### Running the Application with Docker
+1. Build Docker Image:
+   ```bash
+   docker-compose build
+   ```
+   
+2. Run Docker Container:
+   ```bash
+   docker-compose up
+   ```
+
+3. Access the API using Postman to interact with the endpoints.
+
+### Example Use Case
+1. **Register a Face**:
+   Send a POST request to `/api/face/register` with the name and image path.
+2. **Recognize a Face**:
+   Send a POST request to `/api/face/recognize` with the image path to recognize and retrieve the name of the person.
+3. **Get All Faces**:
+   Send a GET request to `/api/face` to retrieve a list of all registered faces.
+4. **Delete a Face**:
+   Send a DELETE request to `/api/face/<id>` to remove a registered face by its ID.
