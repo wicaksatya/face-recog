@@ -52,22 +52,34 @@ def recognize_face():
     face_image = crop_face(img, boxes[0])
     features = extract_features(face_image)
     faces = get_all_faces()
-    best_match = None
-    best_similarity = 0
-    for face in faces:
-        stored_features = torch.tensor(np.frombuffer(face[2], dtype=np.float32))
-        similarity = torch.cosine_similarity(torch.tensor(features), stored_features.unsqueeze(0)).item()
-        if similarity > best_similarity:
-            best_similarity = similarity
-            best_match = face
-    if best_match:
-        response = {
-            'id': best_match[0],
-            'name': best_match[1]
-        }
-        return jsonify({'match': response})
-    else:
-        return jsonify({'error': 'No match found'})
+    results = []
+    
+    for box in boxes:
+        face_image = crop_face(img, box)
+        features = extract_features(face_image)
+        
+        best_match = None
+        best_similarity = 0
+        
+        for face in faces:
+            stored_features = torch.tensor(np.frombuffer(face[2], dtype=np.float32))
+            similarity = torch.cosine_similarity(torch.tensor(features), stored_features.unsqueeze(0)).item()
+            
+            if similarity > best_similarity:
+                best_similarity = similarity
+                best_match = face
+        
+        if best_match:
+            response = {
+                'id': best_match[0],
+                'name': best_match[1],
+                'similarity': best_similarity
+            }
+            results.append({'match': response})
+        else:
+            results.append({'error': 'No match found'})
+    
+    return jsonify(results)
 
 @app.route('/api/face/<int:id>', methods=['DELETE'])
 def delete_face_by_id(id):
